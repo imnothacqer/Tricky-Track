@@ -87,18 +87,19 @@ public class CharacterBrain : MonoBehaviour
     {
         characterAnimator = GetComponentInChildren<Animator>();
 
-        GameManager.instance.OnEnterGameplay += Begin;
-        GameManager.instance.OnExitGameplay += Stop;
+        GameManager.instance.OnStartGame += Begin;
+        GameManager.instance.OnStopGame += Stop;
     }
 
     private void Begin()
     {
         IsRunning = true;
-        GameManager.instance.currentGameState = GameState.OnGamePlay;
+        CanShoot = true;
     }
 
     private void Stop()
     {
         IsRunning = false;
+        CanShoot = false;
     }
 }

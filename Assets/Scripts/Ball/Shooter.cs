@@ -5,28 +5,29 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [Header("Line Settings")]
-    public LineRenderer lineVisual;
+    [Header("Line Settings")] public LineRenderer lineVisual;
     public int lineSegment;
     public bool useLine;
-    
-    [Header("References")]
-    public Rigidbody bulletPrefab;
+
+    [Header("References")] public Rigidbody bulletPrefab;
     public GameObject cursor;
     public Transform shootPoint;
-    
-    [Header("Settings")]
-    public LayerMask layer;
-    
+
+    [Header("Settings")] public LayerMask layer;
+    public bool readyForShoot;
+    public float afterShoot;
 
     private CharacterBrain characterBrain;
     private Camera cam;
+    private Rigidbody selectedBall;
 
     private void Start()
     {
         cam = Camera.main;
         characterBrain = GetComponentInParent<CharacterBrain>();
         lineVisual.positionCount = lineSegment;
+
+        GameManager.instance.OnStartGame += SpawnBall;
     }
 
     private void Update()
@@ -35,10 +36,9 @@ public class Shooter : MonoBehaviour
         {
             LaunchProjectile();
         }
-        
     }
 
-    void LaunchProjectile()
+    private void LaunchProjectile()
     {
         Ray camRay = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -55,19 +55,49 @@ public class Shooter : MonoBehaviour
             {
                 Visualize(Vo);
             }
-            
+
             transform.rotation = Quaternion.LookRotation(Vo);
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && readyForShoot)
             {
-                Rigidbody obj = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                obj.velocity = Vo;
+                Shoot(Vo);
             }
         }
         else
         {
             cursor.SetActive(false);
             lineVisual.enabled = false;
+        }
+    }
+
+    private void Shoot(Vector3 velocity)
+    {
+        if (selectedBall != null)
+        {
+            readyForShoot = false;
+            selectedBall.transform.parent = null;
+            selectedBall.isKinematic = false;
+            selectedBall.velocity = velocity;
+            Destroy(selectedBall.gameObject, 3f);
+            StartCoroutine("Reload");
+        }
+    }
+
+    private IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(afterShoot);
+        selectedBall = null;
+        
+        SpawnBall();
+    }
+
+    private void SpawnBall()
+    {
+        if (selectedBall == null)
+        {
+            selectedBall = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity, transform);
+            selectedBall.isKinematic = true;
+            readyForShoot = true;
         }
     }
 
@@ -81,7 +111,7 @@ public class Shooter : MonoBehaviour
 
         float Sy = distance.y;
         float Sxz = distanceXZ.magnitude;
-        
+
         float Vxz = Sxz / time;
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
 
@@ -109,7 +139,7 @@ public class Shooter : MonoBehaviour
     {
         for (int i = 0; i < lineSegment; i++)
         {
-            Vector3 pos = CalculatePosInTime(vo, i / (float)lineSegment);
+            Vector3 pos = CalculatePosInTime(vo, i / (float) lineSegment);
             lineVisual.SetPosition(i, pos);
         }
     }
