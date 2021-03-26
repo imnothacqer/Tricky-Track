@@ -15,16 +15,13 @@ public class Shooter : MonoBehaviour
 
     [Header("Settings")] public LayerMask layer;
     public bool readyForShoot;
-    public float afterShoot;
+    public float shootTime;
 
-    private CharacterBrain characterBrain;
-    private Camera cam;
     private Rigidbody selectedBall;
+    private Vector3 velocity;
 
     private void Start()
     {
-        cam = Camera.main;
-        characterBrain = GetComponentInParent<CharacterBrain>();
         lineVisual.positionCount = lineSegment;
 
         GameManager.instance.OnStartGame += SpawnBall;
@@ -32,47 +29,39 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-        if (characterBrain.CanShoot)
-        {
-            LaunchProjectile();
-        }
     }
 
-    private void LaunchProjectile()
+    public void LaunchProjectile(Vector3 direction)
     {
-        Ray camRay = cam.ScreenPointToRay(Input.mousePosition);
+        Vector3 Vo;
+        Debug.DrawRay(transform.position, direction, Color.green);
         RaycastHit hit;
-
-        if (Physics.Raycast(camRay, out hit, 100f, layer))
+        lineVisual.enabled = true;
+        
+        Ray rayToPoint = new Ray(transform.position, direction);
+        if (Physics.Raycast(rayToPoint, out hit,100f))
         {
             cursor.SetActive(true);
-            lineVisual.enabled = true;
-            cursor.transform.position = hit.point + Vector3.up * 0.1f;
-
-            Vector3 Vo = CalculateVelocity(hit.point, transform.position, 1f);
-
-            if (useLine)
-            {
-                Visualize(Vo);
-            }
-
-            transform.rotation = Quaternion.LookRotation(Vo);
-
-            if (Input.GetMouseButtonDown(0) && readyForShoot)
-            {
-                Shoot(Vo);
-            }
+            cursor.transform.position = hit.point;
+            Vo = CalculateVelocity(hit.point, transform.position, 1f);
+            
         }
         else
         {
             cursor.SetActive(false);
-            lineVisual.enabled = false;
+            Vector3 lastPosition = transform.position + rayToPoint.direction * 20f;
+            Vo = CalculateVelocity(lastPosition, transform.position, 1f);
         }
+        
+        transform.rotation = Quaternion.LookRotation(Vo);
+        velocity = Vo;
+        
+        Visualize(Vo);
     }
 
-    private void Shoot(Vector3 velocity)
+    public void Shoot()
     {
-        if (selectedBall != null)
+        if (selectedBall != null && readyForShoot)
         {
             readyForShoot = false;
             selectedBall.transform.parent = null;
@@ -85,9 +74,9 @@ public class Shooter : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(afterShoot);
+        yield return new WaitForSeconds(shootTime);
         selectedBall = null;
-        
+
         SpawnBall();
     }
 
@@ -102,11 +91,10 @@ public class Shooter : MonoBehaviour
     }
 
 
-    private Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)
+    public Vector3 CalculateVelocity(Vector3 target, Vector3 origin, float time)
     {
         Vector3 distance = target - origin;
         Vector3 distanceXZ = distance;
-
         distanceXZ.y = 0;
 
         float Sy = distance.y;
