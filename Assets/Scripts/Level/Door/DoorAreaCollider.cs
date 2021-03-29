@@ -13,11 +13,7 @@ public class DoorAreaCollider : MonoBehaviour
     {
         doorBrain = GetComponentInParent<DoorBrain>();
     }
-
-    private void OnCollisionStay(Collision other)
-    {
-        
-    }
+    
 
     private void OnTriggerStay(Collider other)
     {
@@ -26,7 +22,7 @@ public class DoorAreaCollider : MonoBehaviour
             CharacterBrain characterBrain = other.gameObject.GetComponent<CharacterBrain>();
             if (!doorBrain.isDoorOpen)
             {
-                
+
                 characterBrain.IsRunning = false;
                 characterBrain.transform.position = pointTransform.position;
                 isStopped = true;

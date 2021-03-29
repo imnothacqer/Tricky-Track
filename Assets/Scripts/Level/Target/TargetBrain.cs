@@ -10,8 +10,6 @@ public class TargetBrain : MonoBehaviour
     public bool isOpen;
 
     [Header("References")]
-    public List<Material> openTargetMaterials;
-    public List<Material> closeTargetMaterials;
     public GameObject targetCircleObject;
     
     [Header("Events")]
@@ -38,10 +36,7 @@ public class TargetBrain : MonoBehaviour
     private void ToggleMaterial()
     {
         Renderer targetRenderer = targetCircleObject.GetComponent<Renderer>();
-        for (int i = 0; i < 2; i++)
-        {
-            targetRenderer.materials[i] = isOpen ? openTargetMaterials[i] : closeTargetMaterials[i];
-
-        }
+        targetRenderer.materials[0].color = isOpen ? Color.green : Color.red;
+        targetRenderer.materials[1].color = isOpen ? Color.green : Color.red;
     }
 }

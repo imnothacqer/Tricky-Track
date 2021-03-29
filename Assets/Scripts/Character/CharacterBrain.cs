@@ -44,7 +44,7 @@ public class CharacterBrain : MonoBehaviour
         }
     }
     
-    public bool IsWın
+    public bool IsWin
     {
         get
         {
@@ -53,6 +53,7 @@ public class CharacterBrain : MonoBehaviour
         set
         {
             isWin = value;
+            Stop();
             characterAnimator.SetBool("isWin", value);
         }
     }
@@ -66,6 +67,7 @@ public class CharacterBrain : MonoBehaviour
         set
         {
             isDefeat = value;
+            Stop();
             characterAnimator.SetBool("isDefeat", value);
         }
     }
@@ -83,13 +85,16 @@ public class CharacterBrain : MonoBehaviour
     }
 
 
-    private bool isBucketHitted;
+    protected bool isBucketHitted;
     private void Start()
     {
         characterAnimator = GetComponentInChildren<Animator>();
 
         GameManager.instance.OnStartGame += Begin;
         GameManager.instance.OnStopGame += Stop;
+
+        GameManager.instance.OnFinish += FinishGame;
+        GameManager.instance.OnGameOver += GameOver;
     }
 
     private void Begin()
@@ -117,6 +122,25 @@ public class CharacterBrain : MonoBehaviour
             IsHitted = true;
             StartCoroutine("GetUpAfterHitted");
         }
+
+        if (other.gameObject.CompareTag("TorusGlass"))
+        {
+            GameManager.instance.OnFinish?.Invoke();
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            GameManager.instance.OnFinish?.Invoke();
+        }
+        
+        if (other.gameObject.CompareTag("FinishTrigger"))
+        {
+            GameManager.instance.OnFinishTrigger?.Invoke();
+        }
     }
 
     private IEnumerator GetUpAfterHitted()
@@ -126,6 +150,16 @@ public class CharacterBrain : MonoBehaviour
         yield return new WaitForSeconds(1.9f);
         isBucketHitted = false;
     }
-    
-    
+
+    private void FinishGame()
+    {
+        characterAnimator.transform.rotation = new Quaternion(0, -180, 0, 1);
+        IsWin = true;
+        
+    }
+
+    private void GameOver()
+    {
+        IsDefeat = true;
+    }
 }

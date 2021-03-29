@@ -311,6 +311,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isHitted
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isWin
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDefeat
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4288049521587919342}
   m_Solo: 0

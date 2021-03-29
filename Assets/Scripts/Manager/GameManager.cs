@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("UI References")] 
+    public GameObject FinishGamePanel;
+    public GameObject GameOverPanel;
+    
     public static GameManager instance;
 
     public Action OnStartGame;
     public Action OnStopGame;
+    public Action OnGameOver;
     public Action OnFinishTrigger;
+    public Action OnFinish;
+    
 
     private void Awake()
     {
@@ -29,6 +36,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        OnGameOver += GameOver;
+        OnFinish += FinishGame;
+    }
+
     public void StartGame()
     {
         OnStartGame?.Invoke();
@@ -37,5 +50,15 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         OnStopGame?.Invoke();
+    }
+
+    public void GameOver()
+    {
+        GameOverPanel.SetActive(true);
+    }
+
+    public void FinishGame()
+    {
+        FinishGamePanel.SetActive(true);
     }
 }

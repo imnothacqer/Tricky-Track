@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -30,9 +31,9 @@ public class CharacterShoot : MonoBehaviour
 
     private Rigidbody selectedBall;
     private bool readyForShoot;
-
     private bool isAiming;
 
+    private bool isFinishTrigged;
     public bool IsAiming
     {
         get
@@ -52,6 +53,8 @@ public class CharacterShoot : MonoBehaviour
     {
         characterBrain = GetComponentInParent<CharacterBrain>();
         GameManager.instance.OnStartGame += SpawnBall;
+        GameManager.instance.OnFinishTrigger += FinishTrigged;
+        GameManager.instance.OnFinish += Finish;
 
         for (int i = 0; i < dotCount; i++)
         {
@@ -63,33 +66,30 @@ public class CharacterShoot : MonoBehaviour
 
     private void Update()
     {
-        if (!characterBrain.CanShoot && selectedBall)
-        {
-            Destroy(selectedBall.gameObject);
-        }
-        else
-        {
-            SpawnBall();
-        }
-        
         inputHorizontal = SimpleInput.GetAxis("Horizontal");
         inputVertical = SimpleInput.GetAxis("Vertical");
 
-        IsAiming = IsInput();
+        if (isFinishTrigged)
+        {
+            IsAiming = true;
+        }
+        else
+        {
+            IsAiming = IsInput();
+        }
+        
 
         if (IsAiming  && characterBrain.CanShoot)
         {
             Vector3 targetVelocity = LaunchBall();
-
-            if (IsAiming && Input.GetMouseButtonUp(0))
+            if (IsAiming && (Input.GetMouseButtonUp(0) || isFinishTrigged))
             {
                 Shoot(targetVelocity);
-                IsAiming = false;
+                IsAiming = isFinishTrigged;
             }
         }
-        
     }
-
+    
     private Vector3 LaunchBall()
     {
         Vector3 Velocity;
@@ -124,7 +124,7 @@ public class CharacterShoot : MonoBehaviour
             selectedBall.transform.parent = null;
             selectedBall.isKinematic = false;
             selectedBall.velocity = velocity;
-            Destroy(selectedBall.gameObject, 3f);
+            Destroy(selectedBall.gameObject, shootTime * 3f);
             StartCoroutine("Reload");
         }
     }
@@ -176,4 +176,17 @@ public class CharacterShoot : MonoBehaviour
     {
         return Input.GetMouseButton(0) || (inputHorizontal != 0 || inputVertical != 0);
     }
+
+    private void FinishTrigged()
+    {
+        isFinishTrigged = true;
+        shootTime = 0.2f;
+    }
+
+    private void Finish()
+    {
+        ToggleDotLine(false);
+        Destroy(selectedBall.gameObject);
+    }
+    
 }
