@@ -14,8 +14,7 @@ public class CharacterBrain : MonoBehaviour
     [SerializeField] private bool isWin;
     [SerializeField] private bool isDefeat;
     [SerializeField] private bool canShoot;
-
-    public PoolObject ballPool = new PoolObject();
+    
 
     public bool IsRunning
     {
@@ -39,7 +38,9 @@ public class CharacterBrain : MonoBehaviour
         set
         {
             isHitted = value;
+            IsRunning = !value;
             characterAnimator.SetBool("isHitted", value);
+            
         }
     }
     
@@ -80,9 +81,9 @@ public class CharacterBrain : MonoBehaviour
             canShoot = value;
         }
     }
-    
-   
 
+
+    private bool isBucketHitted;
     private void Start()
     {
         characterAnimator = GetComponentInChildren<Animator>();
@@ -102,4 +103,29 @@ public class CharacterBrain : MonoBehaviour
         IsRunning = false;
         CanShoot = false;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("BucketBall"))
+        {
+            if (isBucketHitted)
+            {
+                return;
+            }
+
+            isBucketHitted = true;
+            IsHitted = true;
+            StartCoroutine("GetUpAfterHitted");
+        }
+    }
+
+    private IEnumerator GetUpAfterHitted()
+    {
+        yield return new WaitForSeconds(1.2f);
+        IsHitted = false;
+        yield return new WaitForSeconds(1.9f);
+        isBucketHitted = false;
+    }
+    
+    
 }

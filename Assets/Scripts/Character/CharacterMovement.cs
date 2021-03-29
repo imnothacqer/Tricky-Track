@@ -6,10 +6,10 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private CharacterBrain _characterBrain;
+    [SerializeField] public CharacterBrain _characterBrain;
     
     [Header("Settings")] 
-    [SerializeField] private float movementSpeed;
+    [SerializeField] public float movementSpeed;
 
     private void Start()
     {
@@ -23,4 +23,6 @@ public class CharacterMovement : MonoBehaviour
             transform.Translate(Vector3.forward * movementSpeed * Time.fixedDeltaTime);
         }
     }
+    
+    
 }

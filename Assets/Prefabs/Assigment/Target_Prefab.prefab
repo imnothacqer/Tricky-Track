@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8037465244022493145}
   m_Layer: 9
   m_Name: TargetBody
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4717530365169436614}
   m_Layer: 9
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9103484930961366303, guid: ae53e1417143b704e81cb465122bdbbc, type: 3}
+  - {fileID: 2100000, guid: 3e689203c6df86649955f228ceb1d68a, type: 2}
   - {fileID: 2100000, guid: 258e687421a0e864e8b8fcf6a5a3a012, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -170,9 +170,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4105662172150384651}
   - component: {fileID: 6387620110527616858}
+  - component: {fileID: 224949033}
+  - component: {fileID: 224949032}
   m_Layer: 9
   m_Name: Target_Prefab
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,3 +208,67 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22947586, y: 2.015431, z: 2.0258389}
   m_Center: {x: -0.00740844, y: 0.99633574, z: -0.0010228157}
+--- !u!54 &224949033
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111614812555740063}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &224949032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111614812555740063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e7b8e91cb3f4144859c89688c67105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  openTargetMaterials:
+  - {fileID: 2100000, guid: 55d21054aa8f6d54284c4f4ec8151f29, type: 2}
+  - {fileID: 2100000, guid: 6057397bb5866a243a188927614141bb, type: 2}
+  closeTargetMaterials:
+  - {fileID: 2100000, guid: 3e689203c6df86649955f228ceb1d68a, type: 2}
+  - {fileID: 2100000, guid: 258e687421a0e864e8b8fcf6a5a3a012, type: 2}
+  targetCircleObject: {fileID: 6519229494545655315}
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: BallHitTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: BallHitTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -63,11 +63,19 @@ public class CharacterShoot : MonoBehaviour
 
     private void Update()
     {
+        if (!characterBrain.CanShoot && selectedBall)
+        {
+            Destroy(selectedBall.gameObject);
+        }
+        else
+        {
+            SpawnBall();
+        }
         
         inputHorizontal = SimpleInput.GetAxis("Horizontal");
         inputVertical = SimpleInput.GetAxis("Vertical");
 
-        IsAiming = !IsInputZero();
+        IsAiming = IsInput();
 
         if (IsAiming  && characterBrain.CanShoot)
         {
@@ -163,9 +171,9 @@ public class CharacterShoot : MonoBehaviour
             lineDotList[i].SetActive(newStatus);
         }
     }
-    
-    private bool IsInputZero()
+
+    private bool IsInput()
     {
-        return inputHorizontal == 0 || inputVertical == 0;
+        return Input.GetMouseButton(0) || (inputHorizontal != 0 || inputVertical != 0);
     }
 }

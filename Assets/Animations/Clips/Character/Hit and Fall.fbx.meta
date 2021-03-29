@@ -41,7 +41,7 @@ ModelImporter:
       name: HitandFall
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 31
       lastFrame: 93
       wrapMode: 0
       orientationOffsetY: 0
