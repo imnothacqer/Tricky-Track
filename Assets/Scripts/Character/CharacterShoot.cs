@@ -8,38 +8,33 @@ using UnityEngine.UIElements;
 
 public class CharacterShoot : MonoBehaviour
 {
-    [Header("Settings")] 
-    public float shootRadius;
+    [Header("Settings")] public float shootRadius;
     public LayerMask shootLayer;
     public float shootRange;
 
-    [Header("References")] 
-    public CharacterBrain characterBrain;
+    [Header("References")] public CharacterBrain characterBrain;
     public GameObject ballPrefab;
     public GameObject cursor;
 
-    [Header("Line Settings")] 
-    public GameObject lineDotPrefab;
+    [Header("Line Settings")] public GameObject lineDotPrefab;
     public int dotCount;
-
 
 
     private List<GameObject> lineDotList = new List<GameObject>();
     private float shootTime = 1f;
     private float inputHorizontal;
     private float inputVertical;
+    private Camera cam;
 
     private Rigidbody selectedBall;
     private bool readyForShoot;
     private bool isAiming;
 
     private bool isFinishTrigged;
+
     public bool IsAiming
     {
-        get
-        {
-            return isAiming;
-        }
+        get { return isAiming; }
         set
         {
             isAiming = value;
@@ -51,6 +46,8 @@ public class CharacterShoot : MonoBehaviour
 
     private void Start()
     {
+        cam = Camera.main;
+
         characterBrain = GetComponentInParent<CharacterBrain>();
         GameManager.instance.OnStartGame += SpawnBall;
         GameManager.instance.OnFinishTrigger += FinishTrigged;
@@ -66,38 +63,35 @@ public class CharacterShoot : MonoBehaviour
 
     private void Update()
     {
-        inputHorizontal = SimpleInput.GetAxis("Horizontal");
-        inputVertical = SimpleInput.GetAxis("Vertical");
-
         if (isFinishTrigged)
         {
             IsAiming = true;
-        }
-        else
-        {
-            IsAiming = IsInput();
+            Vector3 velocity = LaunchBall();
+            
+            Shoot(velocity);
+            return;
         }
         
-
-        if (IsAiming  && characterBrain.CanShoot)
+        if (characterBrain.CanShoot && (Input.GetMouseButtonDown(0) || IsAiming))
         {
-            Vector3 targetVelocity = LaunchBall();
-            if (IsAiming && (Input.GetMouseButtonUp(0) || isFinishTrigged))
+            IsAiming = true;
+            Vector3 velocity = LaunchBall();
+
+            if (Input.GetMouseButtonUp(0))
             {
-                Shoot(targetVelocity);
-                IsAiming = isFinishTrigged;
+                Shoot(velocity);
+                IsAiming = false;
             }
         }
     }
-    
+
     private Vector3 LaunchBall()
     {
         Vector3 Velocity;
         RaycastHit hit;
-        Vector3 direction = CalculateDirection();
-        Ray rayToTarget = new Ray(transform.position, direction);
+        Ray rayToTarget = cam.ScreenPointToRay(Input.mousePosition);
         bool isHit = Physics.Raycast(rayToTarget, out hit, shootRange, shootLayer);
-        
+
         if (isHit)
         {
             cursor.transform.position = hit.point;
@@ -105,12 +99,12 @@ public class CharacterShoot : MonoBehaviour
         }
         else
         {
-            Vector3 raycastLastPoint = transform.position + rayToTarget.direction * (shootRange / 3);
+            Vector3 raycastLastPoint = transform.position + rayToTarget.direction * shootRange;
             Velocity = TrajectoryHelper.CalculateVelocity(raycastLastPoint, transform.position, shootTime);
         }
 
         cursor.SetActive(isHit);
-        
+
         Visualize(Velocity);
 
         return Velocity;
@@ -128,7 +122,7 @@ public class CharacterShoot : MonoBehaviour
             StartCoroutine("Reload");
         }
     }
-    
+
     private IEnumerator Reload()
     {
         yield return new WaitForSeconds(shootTime);
@@ -140,26 +134,18 @@ public class CharacterShoot : MonoBehaviour
     {
         if (selectedBall == null)
         {
-            selectedBall = Instantiate(ballPrefab, transform.position, Quaternion.identity, transform).GetComponent<Rigidbody>();
+            selectedBall = Instantiate(ballPrefab, transform.position, Quaternion.identity, transform)
+                .GetComponent<Rigidbody>();
             selectedBall.isKinematic = true;
             readyForShoot = true;
         }
     }
 
-    private Vector3 CalculateDirection()
-    {
-        Vector3 direction = Vector3.forward * 10f;
-        direction.x += inputHorizontal * shootRadius;
-        direction.y += inputVertical * shootRadius;
-        
-        return direction;
-    }
-    
     private void Visualize(Vector3 velocity)
     {
         for (int i = 0; i < dotCount; i++)
         {
-            Vector3 pos = TrajectoryHelper.CalculatePosInTime(transform.position,velocity, i / (float) dotCount);
+            Vector3 pos = TrajectoryHelper.CalculatePosInTime(transform.position, velocity, i / (float) dotCount);
             lineDotList[i].transform.position = pos;
         }
     }
@@ -172,21 +158,16 @@ public class CharacterShoot : MonoBehaviour
         }
     }
 
-    private bool IsInput()
-    {
-        return Input.GetMouseButton(0) || (inputHorizontal != 0 || inputVertical != 0);
-    }
-
     private void FinishTrigged()
     {
         isFinishTrigged = true;
-        shootTime = 0.2f;
+        shootTime = 0.3f;
     }
 
     private void Finish()
     {
         ToggleDotLine(false);
         Destroy(selectedBall.gameObject);
+        isFinishTrigged = false;
     }
-    
 }

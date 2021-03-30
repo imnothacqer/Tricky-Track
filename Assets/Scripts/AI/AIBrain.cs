@@ -134,7 +134,6 @@ public class AIBrain : MonoBehaviour
 
                     if (bucketBrain)
                     {
-                        Debug.Log("Bucket Detected");
                         if (selected.transform.position.z - 5 >= playerTransform.position.z)
                         {
                             targetPosition = selected.transform.position;
