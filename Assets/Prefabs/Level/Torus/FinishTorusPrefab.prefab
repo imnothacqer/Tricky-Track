@@ -3075,7 +3075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5dfa52c0de3af42bc730f09b0f2f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokeHitcount: 4
+  brokeHitcount: 8
   torusGlass: {fileID: 9010018624458290595}
   torusGlassPartsParent: {fileID: 833525929801250737}
   targetObject: {fileID: 884949723428336837}

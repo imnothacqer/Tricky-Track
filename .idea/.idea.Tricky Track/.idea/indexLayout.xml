@@ -21,6 +21,7 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>BackupUnusedAssets</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Recordings</Path>

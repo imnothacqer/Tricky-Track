@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>842f43ac94b4b4f72ac0898650ddcc44</guid>
+    <fileName>Assets/Cleaner/Editor/AssetCollector.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.AssetCollector</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>805140a4856714e288ea84985d3023df</guid>
+    <fileName>Assets/Cleaner/Editor/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>AssetReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>202c278a17939b24c8b79c0ee1f94d8f</guid>
+    <fileName>Assets/Cleaner/Editor/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.ClassReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0d05386265df34bac8d0b6df44aa494c</guid>
+    <fileName>Assets/Cleaner/Editor/CollectionData.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>CollectionData</string>
+      <string>TypeDate</string>
+      <string>IReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>74eec3bfba0594259ac2843353c082a3</guid>
+    <fileName>Assets/Cleaner/Editor/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.FindUnusedAssetsWindow</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2c4f01a79a77a45a9a84004cc2b78098</guid>
+    <fileName>Assets/Cleaner/Editor/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2016-04-12T15:11:36+03:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.ShaderReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ba0519fb541539f4984d79e58705487f</guid>
+    <fileName>Assets/Scripts/AI/AIBrain.cs</fileName>
+    <timeStamp>2021-03-30T19:50:49.9268065+03:00</timeStamp>
+    <typeFullName>
+      <string>AIBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>18fa05240ea16ef46b904c6722a7c4a9</guid>
+    <fileName>Assets/Scripts/AI/AIShooter.cs</fileName>
+    <timeStamp>2021-03-30T16:51:19.25541+03:00</timeStamp>
+    <typeFullName>
+      <string>AIShooter</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1ea52f741bcb98049b69cd330f78a601</guid>
+    <fileName>Assets/Scripts/Character/CharacterBrain.cs</fileName>
+    <timeStamp>2021-03-29T16:45:10.5095818+03:00</timeStamp>
+    <typeFullName>
+      <string>CharacterBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c57e4b78585252e4cbb4d19adaa78ed7</guid>
+    <fileName>Assets/Scripts/Character/CharacterMovement.cs</fileName>
+    <timeStamp>2021-03-29T10:51:19.1640829+03:00</timeStamp>
+    <typeFullName>
+      <string>CharacterMovement</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>79e8883938f03414995b0756f60521a4</guid>
+    <fileName>Assets/Scripts/Character/CharacterShoot.cs</fileName>
+    <timeStamp>2021-03-30T19:55:47.6112643+03:00</timeStamp>
+    <typeFullName>
+      <string>CharacterShoot</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d8d50d69d4457d74aa5f7dbb6cdc047f</guid>
+    <fileName>Assets/Scripts/Helper/TrajectoryHelper.cs</fileName>
+    <timeStamp>2021-03-26T22:19:28.18692+03:00</timeStamp>
+    <typeFullName>
+      <string>TrajectoryHelper</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1adaca21efaa2eb4eb4b8daeee9edf1e</guid>
+    <fileName>Assets/Scripts/Level/Booster/BoosterBrain.cs</fileName>
+    <timeStamp>2021-03-30T17:00:28.1703089+03:00</timeStamp>
+    <typeFullName>
+      <string>BoosterBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>80148b265c86ba94fa5fa33b7bf2c002</guid>
+    <fileName>Assets/Scripts/Level/Booster/BoosterPlatform.cs</fileName>
+    <timeStamp>2021-03-29T10:41:52.9378941+03:00</timeStamp>
+    <typeFullName>
+      <string>BoosterPlatform</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>acd51b0b36f38484aa5d840f5b591185</guid>
+    <fileName>Assets/Scripts/Level/Bucket/BucketBrain.cs</fileName>
+    <timeStamp>2021-03-30T17:00:28.101259+03:00</timeStamp>
+    <typeFullName>
+      <string>BucketBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2f77553b89926f34a826a0ea05b404b0</guid>
+    <fileName>Assets/Scripts/Level/Door/DoorAreaCollider.cs</fileName>
+    <timeStamp>2021-03-30T15:48:27.5357161+03:00</timeStamp>
+    <typeFullName>
+      <string>DoorAreaCollider</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bac2c4a09920bd749ad21e684398d9d8</guid>
+    <fileName>Assets/Scripts/Level/Door/DoorBrain.cs</fileName>
+    <timeStamp>2021-03-30T17:00:28.1503693+03:00</timeStamp>
+    <typeFullName>
+      <string>DoorBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bf5dfa52c0de3af42bc730f09b0f2f56</guid>
+    <fileName>Assets/Scripts/Level/Finish/TorusBrain.cs</fileName>
+    <timeStamp>2021-03-29T15:52:24.3801131+03:00</timeStamp>
+    <typeFullName>
+      <string>TorusBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a1e7b8e91cb3f4144859c89688c67105</guid>
+    <fileName>Assets/Scripts/Level/Target/TargetBrain.cs</fileName>
+    <timeStamp>2021-03-29T14:44:08.9265831+03:00</timeStamp>
+    <typeFullName>
+      <string>TargetBrain</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f72ed723ec8560f41ae11775d3c1b5df</guid>
+    <fileName>Assets/Scripts/Manager/GameManager.cs</fileName>
+    <timeStamp>2021-03-30T17:00:28.1852678+03:00</timeStamp>
+    <typeFullName>
+      <string>GameManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9c6c94318626bb246a07b7f09604d66c</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/AnimationStarter.cs</fileName>
+    <timeStamp>2017-05-13T21:04:25+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.MobileOptimizedWater.Scripts.AnimationStarter</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>163194dd3a9ff9a4f9e9e76a372f4ea5</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/CameraDepthSlider.cs</fileName>
+    <timeStamp>2017-05-13T21:04:10+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.MobileOptimizedWater.Scripts.CameraDepthSlider</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a28d745c2c1c0e249aaa6117f403d94b</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/CameraRotator.cs</fileName>
+    <timeStamp>2017-05-13T21:04:26+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.MobileOptimizedWater.Scripts.CameraRotator</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9b1c28173ea46b14d8082af87f26aa6d</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/FPSCounter.cs</fileName>
+    <timeStamp>2017-05-13T21:04:25+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.Scripts.Helpers.FPSCounter</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>27de325d551c70740a742a8b6544895f</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/FPSUI.cs</fileName>
+    <timeStamp>2017-05-13T21:04:12+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.MobileOptimizedWater.Scripts.FPSUI</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0d1b9910e5f079f4e93608f9b3b58bcc</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/TouchRotator.cs</fileName>
+    <timeStamp>2017-05-13T21:04:08+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.MobileOptimizedWater.Scripts.TouchRotator</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a8224516acd263b45a7aa9170e00b7ff</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/Water/WaterArea.cs</fileName>
+    <timeStamp>2017-05-13T21:04:27+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.Scripts.Water.WaterArea</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>43f35e80d9e9de94b9032fbd4aa2b5f7</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/Water/WaterMaterialSwitcher.cs</fileName>
+    <timeStamp>2017-05-13T21:04:15+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.Scripts.Water.WaterMaterialSwitcher</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7b610d095b4e1b044805a720533b3ce8</guid>
+    <fileName>Assets/ThirtyPart/MobileDepthWater/Scripts/Water/WaterPropertyBlockSetter.cs</fileName>
+    <timeStamp>2017-05-13T21:04:20+03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.Scripts.Water.WaterPropertyBlockSetter</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5fea29bb7c508c244a1f805a5fd3fc4d</guid>
+    <fileName>Assets/ThirtyPart/QuickOutline/Scripts/Outline.cs</fileName>
+    <timeStamp>2018-07-14T05:56:20+03:00</timeStamp>
+    <typeFullName>
+      <string>Outline</string>
+      <string>Outline+Mode</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+</ArrayOfTypeDate>
