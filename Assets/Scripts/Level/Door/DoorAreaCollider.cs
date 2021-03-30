@@ -20,21 +20,45 @@ public class DoorAreaCollider : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             CharacterBrain characterBrain = other.gameObject.GetComponent<CharacterBrain>();
-            if (!doorBrain.isDoorOpen)
-            {
+            AIBrain aiBrain = other.gameObject.GetComponent<AIBrain>();
 
-                characterBrain.IsRunning = false;
-                characterBrain.transform.position = pointTransform.position;
-                isStopped = true;
+            if (characterBrain)
+            {
+                if (!doorBrain.isDoorOpen)
+                {
+
+                    characterBrain.IsRunning = false;
+                    characterBrain.transform.position = pointTransform.position;
+                    isStopped = true;
+                }
+                else
+                {
+                    if (!characterBrain.IsRunning && isStopped)
+                    {
+                        characterBrain.IsRunning = true;
+                        isStopped = false;
+                    }
+                }
             }
             else
             {
-                if (!characterBrain.IsRunning && isStopped)
+                if (!doorBrain.isDoorOpen)
                 {
-                    characterBrain.IsRunning = true;
-                    isStopped = false;
+
+                    aiBrain.IsRunning = false;
+                    aiBrain.transform.position = pointTransform.position;
+                    isStopped = true;
+                }
+                else
+                {
+                    if (!aiBrain.IsRunning && isStopped)
+                    {
+                        aiBrain.IsRunning = true;
+                        isStopped = false;
+                    }
                 }
             }
+            
         }
     }
 }

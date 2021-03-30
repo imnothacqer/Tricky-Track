@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("UI References")] 
     public GameObject FinishGamePanel;
     public GameObject GameOverPanel;
-    
+
     public static GameManager instance;
 
     public Action OnStartGame;
@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Action OnGameOver;
     public Action OnFinishTrigger;
     public Action OnFinish;
+    
+    
     
 
     private void Awake()

@@ -12,30 +12,25 @@ public class BoosterBrain : MonoBehaviour
     [Header("Boost Setting")] 
     public float boostedSpeed = 10;
     public float normalSpeed = 7;
-
-    [Header("References")] 
-    public ParticleSystem boostParticles;
+    
 
     private CharacterMovement _characterMovement;
-
-    private void Start()
-    {
-        boostParticles.Stop();
-    }
-
-
+    private AIBrain _aiBrain;
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             _characterMovement = other.gameObject.GetComponent<CharacterMovement>();
-            if (isBoosted)
+            _aiBrain = other.gameObject.GetComponent<AIBrain>();
+
+            if (_characterMovement)
             {
-                _characterMovement.movementSpeed = boostedSpeed;
+                _characterMovement.movementSpeed = isBoosted ? boostedSpeed : normalSpeed;
             }
-            else
+            else if (_aiBrain)
             {
-                _characterMovement.movementSpeed = normalSpeed;
+                _aiBrain.movementSpeed = isBoosted ? boostedSpeed : normalSpeed;
             }
         }
     }
@@ -44,8 +39,13 @@ public class BoosterBrain : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _characterMovement.movementSpeed = normalSpeed;
-            boostParticles.Stop();
+            if (_characterMovement)
+            {
+                _characterMovement.movementSpeed = normalSpeed;
+            }else if (_aiBrain)
+            {
+                _aiBrain.movementSpeed = normalSpeed;
+            }
         }
         
     }
@@ -53,14 +53,5 @@ public class BoosterBrain : MonoBehaviour
     public void ToggleBooster()
     {
         isBoosted = !isBoosted;
-
-        // if (isBoosted)
-        // {
-        //     boostParticles.Play();
-        // }
-        // else
-        // {
-        //     boostParticles.Stop();
-        // }
     }
 }
